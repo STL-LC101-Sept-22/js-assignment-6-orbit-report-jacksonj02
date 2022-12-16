@@ -1,17 +1,23 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Satellite } from './satellite';
 
 
 @Component({
   selector: 'app-root',
+  template: `<h2>{{satellites}} save {{displayList}}</h2>
+  <app-orbit-list
+  *ngFor="let satellites of satellitess"
+  [satellites]="satellites"
+  [displayList]="displayList">
+  </app-orbit-list>`,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'orbit-report';
-  @Input() 	
   sourceList: Satellite[];
   displayList: Satellite[];
+  
 
 	constructor() {
 		this.sourceList = [];
